@@ -4,6 +4,7 @@ const helmet = require("helmet");
 const compression = require("compression");
 const morgan = require("morgan");
 const path = require("path");
+const cors = require("cors");
 
 //init express
 const app = express();
@@ -37,6 +38,8 @@ app.use(limiter);
 app.use(helmet());
 
 app.use(compression());
+
+app.use(cors());
 
 if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
 else app.use(morgan("combined"));
