@@ -21,6 +21,7 @@ const { GlobalError } = require("./utils/ErrorGlobal.utils");
 //Router
 const { homeRouter } = require("./router/home.router");
 const { contactoRouter } = require("./router/contacto.router");
+const { sugerenciaRouter } = require("./router/sugerencia.router");
 
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
@@ -47,6 +48,7 @@ else app.use(morgan("combined"));
 //endpoints
 app.use("/", homeRouter);
 app.use("/api/v1/contactos", contactoRouter);
+app.use("/api/v1/sugerencias", sugerenciaRouter);
 
 //endponit no found
 app.all("*", (req, res, next) => {
