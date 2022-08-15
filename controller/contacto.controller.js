@@ -7,7 +7,7 @@ const { Contacto } = require("../models/contacto.models");
 const { catchAsync } = require("../utils/catchAsync.utils");
 const { Email } = require("../utils/email.utils");
 
-const getsugerencias = catchAsync(async (req, res, next) => {
+const getcontactos = catchAsync(async (req, res, next) => {
   const contactos = await Contacto.findAll();
   res.status(202).json({ contactos });
 });
@@ -20,4 +20,4 @@ const createContacto = catchAsync(async (req, res, next) => {
   res.status(201).json({ status: "success" });
 });
 
-module.exports = { getsugerencias, createContacto };
+module.exports = { getcontactos, createContacto };

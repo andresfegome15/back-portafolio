@@ -1,12 +1,12 @@
 const express = require("express");
 const {
-  getsugerencias,
+  getcontactos,
   createContacto,
 } = require("../controller/contacto.controller");
 
 const contactoRouter = express.Router();
 
-contactoRouter.get("/", getsugerencias);
+contactoRouter.get("/", getcontactos);
 contactoRouter.post("/", createContacto);
 
 module.exports = { contactoRouter };
