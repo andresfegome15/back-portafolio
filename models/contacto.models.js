@@ -10,7 +10,6 @@ const Contacto = db.define("Contacto", {
   name: { type: DataTypes.STRING, allowNull: false },
   email: { type: DataTypes.STRING, allowNull: false },
   mensaje: { type: DataTypes.STRING, allowNull: false },
-  sugerencia: { type: DataTypes.STRING },
 });
 
 module.exports = { Contacto };
