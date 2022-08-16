@@ -7,7 +7,7 @@ const { Sugerencia } = require("../models/sugerencia.model");
 const { catchAsync } = require("../utils/catchAsync.utils");
 
 const getSugerencia = catchAsync(async (req, res, next) => {
-  const sugerencia = await Sugerencia.findAll();
+  const sugerencia = await Sugerencia.findAll({ order: [["id", "DESC"]] });
 
   res.status(200).json({ sugerencia });
 });
