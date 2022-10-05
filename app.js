@@ -22,6 +22,7 @@ const { GlobalError } = require("./utils/ErrorGlobal.utils");
 const { homeRouter } = require("./router/home.router");
 const { contactoRouter } = require("./router/contacto.router");
 const { sugerenciaRouter } = require("./router/sugerencia.router");
+const { visitaRouter } = require("./router/visita.router");
 
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
@@ -30,7 +31,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 const limiter = rateLimit({
   max: 10000,
-  windowMs: 60 * 60 * 1000, // 1 hr
+  windowMs: 60 * 60 * 10000, // 1 hr
   message: "Number of requests have been exceeded",
 });
 
@@ -49,6 +50,7 @@ else app.use(morgan("combined"));
 app.use("/", homeRouter);
 app.use("/api/v1/contactos", contactoRouter);
 app.use("/api/v1/sugerencias", sugerenciaRouter);
+app.use("/api/v1/visitas", visitaRouter);
 
 //endponit no found
 app.all("*", (req, res, next) => {
