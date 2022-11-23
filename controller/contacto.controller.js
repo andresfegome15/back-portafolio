@@ -21,7 +21,7 @@ const getcontactos = catchAsync(async (req, res, next) => {
 const createContacto = catchAsync(async (req, res, next) => {
   const { name, email, mensaje } = req.body;
   await Contacto.create({ name, email, mensaje });
-  await new Email(email).sendWelcome(name);
+  // await new Email(email).sendWelcome(name);
 
   res.status(201).json({ status: "success" });
 });

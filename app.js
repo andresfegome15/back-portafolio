@@ -23,6 +23,7 @@ const { homeRouter } = require("./router/home.router");
 const { contactoRouter } = require("./router/contacto.router");
 const { sugerenciaRouter } = require("./router/sugerencia.router");
 const { visitaRouter } = require("./router/visita.router");
+const { facebookRouter } = require("./router/facebook.router");
 
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
@@ -30,8 +31,8 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 
 const limiter = rateLimit({
-  max: 10000,
-  windowMs: 60 * 60 * 10000, // 1 hr
+  max: 90000,
+  windowMs: 60 * 60 * 1000, // 1 hr
   message: "Number of requests have been exceeded",
 });
 
@@ -51,6 +52,7 @@ app.use("/", homeRouter);
 app.use("/api/v1/contactos", contactoRouter);
 app.use("/api/v1/sugerencias", sugerenciaRouter);
 app.use("/api/v1/visitas", visitaRouter);
+app.use("/api/v1/facebook", facebookRouter);
 
 //endponit no found
 app.all("*", (req, res, next) => {
